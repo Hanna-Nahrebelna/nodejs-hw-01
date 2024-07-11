@@ -8,9 +8,16 @@ export const removeAllContacts = async () => {
 
     // Парсимо JSON-рядок масив контактів
     const contacts = JSON.parse(readData);
+
+    // Створюємо порожній масив
+    const emptyArray = [];
+
+    // Записуємо порожній масив у файл
+    await fs.writeFile(PATH_DB, JSON.stringify(emptyArray, null, 2));
+    console.log('All contacts have been removed.');
     
     // Повертаємо порожній масив
-    return [];
+    return emptyArray;
     
   } catch (error) {
     console.error('Error reading contacts:', error);
